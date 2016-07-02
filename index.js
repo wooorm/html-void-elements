@@ -10,8 +10,5 @@
 
 /* eslint-env commonjs */
 
-/*
- * Expose.
- */
-
+/* Expose. */
 module.exports = require('./index.json');

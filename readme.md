@@ -4,6 +4,9 @@ List of known void HTML elements.  Includes ancient (for example,
 `nextid` and `basefont`) and modern (for example, `img` and
 `meta`) tag-names from both W3C and WHATWG.
 
+**Note**: there’s one special case: `menuitem`.  W3C specifies it to be
+void, but WHATWG doesn’t.  I suggest using the void form.
+
 ## Installation
 
 [npm][]:

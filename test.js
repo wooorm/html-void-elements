@@ -10,30 +10,24 @@
 
 /* eslint-env node */
 
-/*
- * Module dependencies.
- */
-
+/* Module dependencies. */
 var test = require('tape');
 var htmlVoidElements = require('./index.js');
 
-/*
- * Tests.
- */
-
+/* Tests. */
 test('htmlVoidElements', function (t) {
-    t.ok(
-        Array.isArray(htmlVoidElements),
-        'should be an `array`'
+  t.ok(
+    Array.isArray(htmlVoidElements),
+    'should be an `array`'
+  );
+
+  htmlVoidElements.forEach(function (tagName) {
+    t.equal(
+      typeof tagName,
+      'string',
+      '`' + tagName + '` should be a string'
     );
+  });
 
-    htmlVoidElements.forEach(function (tagName) {
-        t.equal(
-            typeof tagName,
-            'string',
-            '`' + tagName + '` should be a string'
-        );
-    });
-
-    t.end();
+  t.end();
 });
