@@ -2,19 +2,18 @@
 
 /* Dependencies. */
 var fs = require('fs');
-var path = require('path');
 var http = require('http');
 var https = require('https');
 var cheerio = require('cheerio');
 var bail = require('bail');
-var list = require('..');
+var list = require('./');
 
 /* Constants. */
 var HTTPS = 'https://';
 
 /* Input / output locations. */
 var w3c = 'http://w3c.github.io/html/syntax.html#void-elements';
-var output = path.join(__dirname, '..', 'index.json');
+var output = 'index.json';
 
 /* Load. */
 function load(url, callback) {
