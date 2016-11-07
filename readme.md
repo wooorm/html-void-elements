@@ -15,12 +15,7 @@ void, but WHATWG doesn’t.  I suggest using the void form.
 npm install html-void-elements
 ```
 
-**html-void-elements** is also available as an AMD, CommonJS, and globals
-module, [uncompressed and compressed][releases].
-
 ## Usage
-
-Dependencies:
 
 ```javascript
 var htmlVoidElements = require('html-void-elements');
@@ -71,8 +66,6 @@ Yields:
 [build-page]: https://travis-ci.org/wooorm/html-void-elements
 
 [npm]: https://docs.npmjs.com/cli/install
-
-[releases]: https://github.com/wooorm/html-void-elements/releases
 
 [license]: LICENSE
 
