@@ -12,7 +12,7 @@
 
 /* Module dependencies. */
 var test = require('tape');
-var htmlVoidElements = require('./index.js');
+var htmlVoidElements = require('./');
 
 /* Tests. */
 test('htmlVoidElements', function (t) {
