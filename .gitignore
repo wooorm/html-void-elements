@@ -1,6 +1,5 @@
 .DS_Store
 *.log
-coverage/
 node_modules/
 html-void-elements.js
 html-void-elements.min.js

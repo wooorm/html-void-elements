@@ -1,4 +1,4 @@
-# html-void-elements [![Build Status][build-badge]][build-page] [![Coverage Status][coverage-badge]][coverage-page]
+# html-void-elements [![Build Status][build-badge]][build-page]
 
 List of known void HTML elements.  Includes ancient (for example,
 `nextid` and `basefont`) and modern (for example, `img` and
@@ -69,10 +69,6 @@ Yields:
 [build-badge]: https://img.shields.io/travis/wooorm/html-void-elements.svg
 
 [build-page]: https://travis-ci.org/wooorm/html-void-elements
-
-[coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/html-void-elements.svg
-
-[coverage-page]: https://codecov.io/github/wooorm/html-void-elements?branch=master
 
 [npm]: https://docs.npmjs.com/cli/install
 
