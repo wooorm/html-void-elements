@@ -1,24 +1,31 @@
 'use strict';
 
 var fs = require('fs');
-var jsdom = require('jsdom');
+var https = require('https');
+var concat = require('concat-stream');
+var unified = require('unified');
+var html = require('rehype-parse');
+var q = require('hast-util-select');
+var toString = require('hast-util-to-string');
 var bail = require('bail');
 var list = require('./');
 
-jsdom.env('http://w3c.github.io/html/syntax.html#void-elements', function (err, window) {
-  bail(err);
+https.get('https://html.spec.whatwg.org/multipage/syntax.html#elements-2', function (res) {
+  res.pipe(concat(onconcat)).on('error', bail);
 
-  var dfn = window.document.getElementById('void-elements');
-  var dd = dfn.parentNode.nextElementSibling;
-  var rows = [].slice.call(dd.querySelectorAll('code a'));
+  function onconcat(buf) {
+    var dl = q.select('#elements-2 ~ dl dd', unified().use(html).parse(buf));
 
-  rows.forEach(function (row) {
-    var data = row.textContent;
+    q.selectAll('code', dl).forEach(each);
 
-    if (data && !/\s/.test(data) && list.indexOf(data) === -1) {
-      list.push(data);
+    fs.writeFile('index.json', JSON.stringify(list.sort(), 0, 2) + '\n', bail);
+
+    function each(node) {
+      var data = toString(node);
+
+      if (data && !/\s/.test(data) && list.indexOf(data) === -1) {
+        list.push(data);
+      }
     }
-  });
-
-  fs.writeFile('index.json', JSON.stringify(list.sort(), 0, 2) + '\n', bail);
+  }
 });
