@@ -1,9 +1,10 @@
 language: node_js
 node_js:
-- '4.0'
-- '8.0'
+- lts/boron
+- node
 deploy:
   provider: releases
+  skip_cleanup: true
   api_key:
     secure: yunwrL92k9Lsm/MPorOAAMLzvWKtN6nVxIJhw0OcA+zQipNgqO4UWdrfh/Ys/k3ZEyhAj+ne75RTAv/lhM9xhc6dRRwKkRTHmyVkieinO0/RmJArQSO+tY39CYPNMTNnjvqW+/JaXnUY3gK+NPVOy6MpqrtLCVdPvcV/GnLIvpQz4+bnRa/z+JJsfLbYwmO1f5aodEKuIkVs7/C1eWoPR+spEpe8GS0KnKhMMZ6xsHElMnqscJjkLEYtGrwZeOp8mrRBJcgLoHS39Lzr2T2GXfnK6SR2CJ8MX5Y4hHoCtbJ/sPZIHC7oGsILqkpDZIyHjJfUeeNY360UtWPpALMatprommxtBQww+6KQwQJOZFyYW+QrzIRnfBzyke1eIkaSfCN4MLucxNS2sRlZb++g+77bwfF7ItdUozRzoliua8u2BHcOihde+Li8sqpZ3JSvuyl3OYuZkDTfxmJyLPzRYRzFxj9uBlmCRWqiGBFxGqM06vbNZ0PA3xLX0qr0BrwiwyGSOK8hUca8Z3hkrwXwl6htFowBY5AUUco+wtEe25mKLcmNtoIZslduPeO2zc38vaAQ0vTT+VSMBgio1vtELdkdfD9bSuPOgksPI8vBOkqqyNe1Ju+8npP/1AqhU6zcOHa6uIO78esimksyoGTEzAEsJ2LBAUwFdrI9deckNnk=
   file:
@@ -11,4 +12,3 @@ deploy:
     - "html-void-elements.min.js"
   on:
     tags: true
-    node: '8.0'
