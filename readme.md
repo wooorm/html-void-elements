@@ -18,9 +18,9 @@ npm install html-void-elements
 ## Usage
 
 ```javascript
-var htmlVoidElements = require('html-void-elements');
+var htmlVoidElements = require('html-void-elements')
 
-console.log(htmlVoidElements);
+console.log(htmlVoidElements)
 ```
 
 Yields:
