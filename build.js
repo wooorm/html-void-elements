@@ -8,7 +8,7 @@ var html = require('rehype-parse');
 var q = require('hast-util-select');
 var toString = require('hast-util-to-string');
 var bail = require('bail');
-var list = require('./');
+var list = require('.');
 
 https.get('https://html.spec.whatwg.org/multipage/syntax.html#elements-2', function (res) {
   res.pipe(concat(onconcat)).on('error', bail);

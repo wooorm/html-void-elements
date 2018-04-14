@@ -1,7 +1,7 @@
 'use strict';
 
 var test = require('tape');
-var htmlVoidElements = require('./');
+var htmlVoidElements = require('.');
 
 test('htmlVoidElements', function (t) {
   t.ok(
