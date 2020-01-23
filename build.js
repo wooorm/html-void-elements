@@ -29,7 +29,7 @@ function onconcat(buf) {
 function each(node) {
   var data = toString(node)
 
-  if (data && !/\s/.test(data) && list.indexOf(data) === -1) {
+  if (data && !/\s/.test(data) && !list.includes(data)) {
     list.push(data)
   }
 }
