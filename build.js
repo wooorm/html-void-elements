@@ -14,8 +14,8 @@ var proc = unified().use(html)
 
 https.get('https://html.spec.whatwg.org/multipage/syntax.html', onconnection)
 
-function onconnection(res) {
-  res.pipe(concat(onconcat)).on('error', bail)
+function onconnection(response) {
+  response.pipe(concat(onconcat)).on('error', bail)
 }
 
 function onconcat(buf) {

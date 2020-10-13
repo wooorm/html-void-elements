@@ -1,2 +1,6 @@
+.nyc_output/
+coverage/
+*.md
+*.json
 html-void-elements.js
 html-void-elements.min.js
