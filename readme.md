@@ -68,9 +68,9 @@ Yields:
 
 <!-- Definition -->
 
-[build-badge]: https://img.shields.io/travis/wooorm/html-void-elements.svg
+[build-badge]: https://github.com/wooorm/html-void-elements/workflows/main/badge.svg
 
-[build]: https://travis-ci.org/wooorm/html-void-elements
+[build]: https://github.com/wooorm/html-void-elements/actions
 
 [downloads-badge]: https://img.shields.io/npm/dm/html-void-elements.svg
 
