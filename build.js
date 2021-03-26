@@ -1,14 +1,12 @@
-'use strict'
-
-var fs = require('fs')
-var https = require('https')
-var concat = require('concat-stream')
-var unified = require('unified')
-var html = require('rehype-parse')
-var q = require('hast-util-select')
-var toString = require('hast-util-to-string')
-var bail = require('bail')
-var list = require('.')
+import fs from 'fs'
+import https from 'https'
+import concat from 'concat-stream'
+import unified from 'unified'
+import html from 'rehype-parse'
+import q from 'hast-util-select'
+import toString from 'hast-util-to-string'
+import {bail} from 'bail'
+import {htmlVoidElements} from './index.js'
 
 var proc = unified().use(html)
 
@@ -27,10 +25,16 @@ function onconcat(buf) {
   while (++index < nodes.length) {
     value = toString(nodes[index])
 
-    if (value && !/\s/.test(value) && !list.includes(value)) {
-      list.push(value)
+    if (value && !/\s/.test(value) && !htmlVoidElements.includes(value)) {
+      htmlVoidElements.push(value)
     }
   }
 
-  fs.writeFile('index.json', JSON.stringify(list.sort(), 0, 2) + '\n', bail)
+  fs.writeFile(
+    'index.js',
+    'export var htmlVoidElements = ' +
+      JSON.stringify(htmlVoidElements.sort(), null, 2) +
+      '\n',
+    bail
+  )
 }

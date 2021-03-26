@@ -1,6 +1,7 @@
 # html-void-elements
 
 [![Build][build-badge]][build]
+[![Coverage][coverage-badge]][coverage]
 [![Downloads][downloads-badge]][downloads]
 [![Size][size-badge]][size]
 
@@ -8,11 +9,10 @@ List of known void HTML elements.
 Includes ancient (such as `nextid` and `basefont`) and modern (such as `img` and
 `meta`) tag names from the HTML living standard.
 
-**Note**: there’s one special case: `menuitem`.
-W3C specifies it to be void, but WHATWG doesn’t.
-I suggest using the void form.
-
 ## Install
+
+This package is ESM only: Node 12+ is needed to use it and it must be `import`ed
+instead of `require`d.
 
 [npm][]:
 
@@ -23,7 +23,7 @@ npm install html-void-elements
 ## Use
 
 ```js
-var htmlVoidElements = require('html-void-elements')
+import {htmlVoidElements} from 'html-void-elements'
 
 console.log(htmlVoidElements)
 ```
@@ -31,7 +31,8 @@ console.log(htmlVoidElements)
 Yields:
 
 ```js
-[ 'area',
+[
+  'area',
   'base',
   'basefont',
   'bgsound',
@@ -53,14 +54,18 @@ Yields:
   'param',
   'source',
   'track',
-  'wbr' ]
+  'wbr'
+]
 ```
 
 ## API
 
+This package exports the following identifiers: `htmlVoidElements`.
+There is no default export.
+
 ### `htmlVoidElements`
 
-`Array.<string>` — List of lower-case tag names.
+`string[]` — List of lowercase tag names.
 
 ## License
 
@@ -71,6 +76,10 @@ Yields:
 [build-badge]: https://github.com/wooorm/html-void-elements/workflows/main/badge.svg
 
 [build]: https://github.com/wooorm/html-void-elements/actions
+
+[coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/html-void-elements.svg
+
+[coverage]: https://codecov.io/github/wooorm/html-void-elements
 
 [downloads-badge]: https://img.shields.io/npm/dm/html-void-elements.svg
 
