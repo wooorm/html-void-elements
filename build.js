@@ -20,16 +20,17 @@ function onconnection(response) {
 
 function onconcat(buf) {
   var dl = q.select('#elements-2 ~ dl dd', proc.parse(buf))
+  var nodes = q.selectAll('code', dl)
+  var index = -1
+  var value
 
-  q.selectAll('code', dl).forEach(each)
+  while (++index < nodes.length) {
+    value = toString(nodes[index])
+
+    if (value && !/\s/.test(value) && !list.includes(value)) {
+      list.push(value)
+    }
+  }
 
   fs.writeFile('index.json', JSON.stringify(list.sort(), 0, 2) + '\n', bail)
-}
-
-function each(node) {
-  var data = toString(node)
-
-  if (data && !/\s/.test(data) && !list.includes(data)) {
-    list.push(data)
-  }
 }
