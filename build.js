@@ -1,3 +1,4 @@
+import assert from 'node:assert'
 import fs from 'node:fs'
 import https from 'node:https'
 import concatStream from 'concat-stream'
@@ -15,6 +16,7 @@ https.get('https://html.spec.whatwg.org/multipage/syntax.html', (response) => {
     .pipe(
       concatStream((buf) => {
         const dd = select('#elements-2 ~ dl dd', processor.parse(buf))
+        assert(dd, 'expected a `dd`')
         const nodes = selectAll('code', dd)
         let index = -1
 
@@ -28,9 +30,16 @@ https.get('https://html.spec.whatwg.org/multipage/syntax.html', (response) => {
 
         fs.writeFile(
           'index.js',
-          'export const htmlVoidElements = ' +
-            JSON.stringify(htmlVoidElements.sort(), null, 2) +
-            '\n',
+          [
+            '/**',
+            ' * List of HTML void tag names.',
+            ' *',
+            ' * @type {Array<string>}',
+            ' */',
+            'export const htmlVoidElements = ' +
+              JSON.stringify(htmlVoidElements.sort(), null, 2),
+            ''
+          ].join('\n'),
           bail
         )
       })

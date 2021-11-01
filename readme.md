@@ -5,7 +5,7 @@
 [![Downloads][downloads-badge]][downloads]
 [![Size][size-badge]][size]
 
-List of known void HTML elements.
+List of HTML void tag names.
 Includes ancient (such as `nextid` and `basefont`) and modern (such as `img` and
 `meta`) tag names from the HTML living standard.
 
