@@ -6,18 +6,53 @@
 [![Size][size-badge]][size]
 
 List of HTML void tag names.
-Includes ancient (such as `nextid` and `basefont`) and modern (such as `img` and
-`meta`) tag names from the HTML living standard.
+
+## Contents
+
+*   [What is this?](#what-is-this)
+*   [When should I use this?](#when-should-i-use-this)
+*   [Install](#install)
+*   [Use](#use)
+*   [API](#api)
+    *   [`htmlVoidElements`](#htmlvoidelements)
+*   [Types](#types)
+*   [Compatibility](#compatibility)
+*   [Security](#security)
+*   [Related](#related)
+*   [Contribute](#contribute)
+*   [License](#license)
+
+## What is this?
+
+This is a list of all void tag names according to HTML.
+
+> 👉 **Note**: Includes ancient (such as `nextid` and `basefont`) tag names too.
+
+## When should I use this?
+
+You can use this when you’re writing HTML parsers, minifiers, or compilers.
 
 ## Install
 
-This package is ESM only: Node 12+ is needed to use it and it must be `import`ed
-instead of `require`d.
-
-[npm][]:
+This package is [ESM only][esm].
+In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
 
 ```sh
 npm install html-void-elements
+```
+
+In Deno with [Skypack][]:
+
+```js
+import {htmlVoidElements} from 'https://cdn.skypack.dev/html-void-elements@2?dts'
+```
+
+In browsers with [Skypack][]:
+
+```html
+<script type="module">
+  import {htmlVoidElements} from 'https://cdn.skypack.dev/html-void-elements@2?min'
+</script>
 ```
 
 ## Use
@@ -65,7 +100,33 @@ There is no default export.
 
 ### `htmlVoidElements`
 
-`string[]` — List of lowercase tag names.
+List of HTML void tag names (`Array<string>`).
+
+## Types
+
+This package is fully typed with [TypeScript][].
+
+## Compatibility
+
+This package is at least compatible with all maintained versions of Node.js.
+As of now, that is Node.js 12.20+, 14.14+, and 16.0+.
+It also works in Deno and modern browsers.
+
+## Security
+
+This package is safe.
+
+## Related
+
+*   [`wooorm/html-tag-names`](https://github.com/wooorm/html-tag-names)
+    — list of HTML tag names
+*   [`wooorm/html-element-attributes`](https://github.com/wooorm/html-element-attributes)
+    — map of HTML elements to attributes
+
+## Contribute
+
+Yes please!
+See [How to Contribute to Open Source][contribute].
 
 ## License
 
@@ -91,6 +152,14 @@ There is no default export.
 
 [npm]: https://docs.npmjs.com/cli/install
 
+[skypack]: https://www.skypack.dev
+
 [license]: license
 
 [author]: https://wooorm.com
+
+[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
+[typescript]: https://www.typescriptlang.org
+
+[contribute]: https://opensource.guide/how-to-contribute/
