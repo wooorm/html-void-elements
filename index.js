@@ -1,4 +1,4 @@
-export var htmlVoidElements = [
+export const htmlVoidElements = [
   'area',
   'base',
   'basefont',

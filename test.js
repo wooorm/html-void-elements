@@ -2,7 +2,7 @@ import test from 'tape'
 import {htmlVoidElements} from './index.js'
 
 test('htmlVoidElements', function (t) {
-  var index = -1
+  let index = -1
 
   t.ok(Array.isArray(htmlVoidElements), 'should be an `array`')
 

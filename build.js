@@ -1,16 +1,14 @@
-import fs from 'fs'
-import https from 'https'
+import fs from 'node:fs'
+import https from 'node:https'
 import concat from 'concat-stream'
-import unified from 'unified'
+import {unified} from 'unified'
 import html from 'rehype-parse'
-// @ts-ignore
-import q from 'hast-util-select'
-// @ts-ignore
-import toString from 'hast-util-to-string'
+import {select, selectAll} from 'hast-util-select'
+import {toString} from 'hast-util-to-string'
 import {bail} from 'bail'
 import {htmlVoidElements} from './index.js'
 
-var proc = unified().use(html)
+const proc = unified().use(html)
 
 https.get('https://html.spec.whatwg.org/multipage/syntax.html', onconnection)
 
@@ -25,11 +23,11 @@ function onconnection(response) {
  * @param {Buffer} buf
  */
 function onconcat(buf) {
-  var dl = q.select('#elements-2 ~ dl dd', proc.parse(buf))
-  var nodes = q.selectAll('code', dl)
-  var index = -1
+  const dl = select('#elements-2 ~ dl dd', proc.parse(buf))
+  const nodes = selectAll('code', dl)
+  let index = -1
   /** @type {string} */
-  var value
+  let value
 
   while (++index < nodes.length) {
     value = toString(nodes[index])
@@ -41,7 +39,7 @@ function onconcat(buf) {
 
   fs.writeFile(
     'index.js',
-    'export var htmlVoidElements = ' +
+    'export const htmlVoidElements = ' +
       JSON.stringify(htmlVoidElements.sort(), null, 2) +
       '\n',
     bail
