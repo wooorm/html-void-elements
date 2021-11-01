@@ -1,47 +1,39 @@
 import fs from 'node:fs'
 import https from 'node:https'
-import concat from 'concat-stream'
+import concatStream from 'concat-stream'
 import {unified} from 'unified'
-import html from 'rehype-parse'
+import rehypeParse from 'rehype-parse'
 import {select, selectAll} from 'hast-util-select'
 import {toString} from 'hast-util-to-string'
 import {bail} from 'bail'
 import {htmlVoidElements} from './index.js'
 
-const proc = unified().use(html)
+const processor = unified().use(rehypeParse)
 
-https.get('https://html.spec.whatwg.org/multipage/syntax.html', onconnection)
+https.get('https://html.spec.whatwg.org/multipage/syntax.html', (response) => {
+  response
+    .pipe(
+      concatStream((buf) => {
+        const dd = select('#elements-2 ~ dl dd', processor.parse(buf))
+        const nodes = selectAll('code', dd)
+        let index = -1
 
-/**
- * @param {import('http').IncomingMessage} response
- */
-function onconnection(response) {
-  response.pipe(concat(onconcat)).on('error', bail)
-}
+        while (++index < nodes.length) {
+          const value = toString(nodes[index])
 
-/**
- * @param {Buffer} buf
- */
-function onconcat(buf) {
-  const dl = select('#elements-2 ~ dl dd', proc.parse(buf))
-  const nodes = selectAll('code', dl)
-  let index = -1
-  /** @type {string} */
-  let value
+          if (value && !/\s/.test(value) && !htmlVoidElements.includes(value)) {
+            htmlVoidElements.push(value)
+          }
+        }
 
-  while (++index < nodes.length) {
-    value = toString(nodes[index])
-
-    if (value && !/\s/.test(value) && !htmlVoidElements.includes(value)) {
-      htmlVoidElements.push(value)
-    }
-  }
-
-  fs.writeFile(
-    'index.js',
-    'export const htmlVoidElements = ' +
-      JSON.stringify(htmlVoidElements.sort(), null, 2) +
-      '\n',
-    bail
-  )
-}
+        fs.writeFile(
+          'index.js',
+          'export const htmlVoidElements = ' +
+            JSON.stringify(htmlVoidElements.sort(), null, 2) +
+            '\n',
+          bail
+        )
+      })
+    )
+    .on('error', bail)
+})
