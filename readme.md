@@ -26,7 +26,7 @@ List of HTML void tag names.
 
 This is a list of all void tag names according to HTML.
 
-> 👉 **Note**: Includes ancient (such as `nextid` and `basefont`) tag names too.
+> 👉 **Note**: includes ancient (such as `nextid` and `basefont`) tag names too.
 
 ## When should I use this?
 
@@ -35,7 +35,7 @@ You can use this when you’re writing HTML parsers, minifiers, or compilers.
 ## Install
 
 This package is [ESM only][esm].
-In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
+In Node.js (version 14.14+, 16.0+), install with [npm][]:
 
 ```sh
 npm install html-void-elements
@@ -95,7 +95,7 @@ Yields:
 
 ## API
 
-This package exports the following identifiers: `htmlVoidElements`.
+This package exports the identifier `htmlVoidElements`.
 There is no default export.
 
 ### `htmlVoidElements`
@@ -105,11 +105,12 @@ List of HTML void tag names (`Array<string>`).
 ## Types
 
 This package is fully typed with [TypeScript][].
+It exports no additional types.
 
 ## Compatibility
 
 This package is at least compatible with all maintained versions of Node.js.
-As of now, that is Node.js 12.20+, 14.14+, and 16.0+.
+As of now, that is Node.js 14.14+ and 16.0+.
 It also works in Deno and modern browsers.
 
 ## Security
