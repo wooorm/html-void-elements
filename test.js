@@ -1,18 +1,17 @@
-import test from 'tape'
+import assert from 'node:assert/strict'
+import test from 'node:test'
 import {htmlVoidElements} from './index.js'
 
-test('htmlVoidElements', function (t) {
+test('htmlVoidElements', function () {
   let index = -1
 
-  t.ok(Array.isArray(htmlVoidElements), 'should be an `array`')
+  assert.ok(Array.isArray(htmlVoidElements), 'should be an `array`')
 
   while (++index < htmlVoidElements.length) {
-    t.equal(
+    assert.equal(
       typeof htmlVoidElements[index],
       'string',
       '`' + htmlVoidElements[index] + '` should be a string'
     )
   }
-
-  t.end()
 })
