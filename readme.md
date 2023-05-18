@@ -26,7 +26,7 @@ List of HTML void tag names.
 
 This is a list of all void tag names according to HTML.
 
-> 👉 **Note**: includes ancient (such as `nextid` and `basefont`) tag names too.
+> 👉 **Note**: includes ancient (such as `basefont` and `bgsound`) tag names too.
 
 ## When should I use this?
 
@@ -80,12 +80,9 @@ Yields:
   'image',
   'img',
   'input',
-  'isindex',
   'keygen',
   'link',
-  'menuitem',
   'meta',
-  'nextid',
   'param',
   'source',
   'track',
