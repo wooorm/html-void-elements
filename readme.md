@@ -26,7 +26,8 @@ List of HTML void tag names.
 
 This is a list of all void tag names according to HTML.
 
-> 👉 **Note**: includes ancient (such as `basefont` and `bgsound`) tag names too.
+> 👉 **Note**: includes ancient (such as `basefont` and `bgsound`) tag names
+> too.
 
 ## When should I use this?
 
